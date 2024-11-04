@@ -56,10 +56,20 @@ git push origin main
 ```
 
 ### View commit history
-```
+``` bash
+## view current  commit
 git log
 
+## view all commits
+git log --all
+
+## view all commit with graph
+git log --all -graph
+
+
 ```
+
+
 
 ### Create new branch
 ```
@@ -89,6 +99,8 @@ git merge <branch-name>
 git branch -d <branch-name>
 
 ```
+
+
 
 
 
