@@ -51,7 +51,8 @@ git pull
 
 ### Push change to the remote repository:
 ```
-git push origin main
+git push origin <branch-name>
+git push -u origin <branch-name>
 
 ```
 
@@ -95,8 +96,13 @@ git merge <branch-name>
 ```
 
 ### Delete a branch
-```
+``` bash
+# delete locally
 git branch -d <branch-name>
+
+# delete from github
+git push origin --delete <feature-name>
+
 
 ```
 
