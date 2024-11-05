@@ -1,15 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </a>
-      <!-- Burger Menu -->
-      <div class="burger-wrapper d-lg-none">
+        <!-- Burger Menu -->
+        <div class="burger-wrapper d-lg-none">
         <label class="burger-1" for="burger">
           <input
             type="checkbox"
             id="burger"
+            ref="burgerCheckbox"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
           />
@@ -20,15 +21,41 @@
       </div>
       <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
-          <a class="nav-item nav-link " :class="{ active: activeSection === 'about' }" href="#about" @click="setActiveSection('about')">About me</a>
-          <a class="nav-item nav-link" :class="{ active: activeSection === 'experience' }" href="#experience" @click="setActiveSection('experience')">Experience</a>
-          <a class="nav-item nav-link" :class="{ active: activeSection === 'education' }" href="#education" @click="setActiveSection('education')">Education</a>
-          <a class="nav-item nav-link" :class="{ active: activeSection === 'skills' }" href="#skills" @click="setActiveSection('skills')">Skills</a>
-          <a class="nav-item nav-link" :class="{ active: activeSection === 'contact' }" href="#contact" @click="setActiveSection('contact')">Contact</a>
-          <button type="button" class="btn btn-outline-primary me-2">Resume</button>
-          <DarkModeToggle />
-      </div>
-
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'about' }"
+            to="/about"
+            @click="closeMenu"
+          >About me</router-link>
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'experience' }"
+            to="/experience"
+            @click="closeMenu"
+          >Experience</router-link>
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'education' }"
+            to="/education"
+            @click="closeMenu"
+          >Education</router-link>
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'skills' }"
+            to="/skills"
+            @click="closeMenu"
+          >Skills</router-link>
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'contact' }"
+            to="/contact"
+            @click="closeMenu"
+          >Contact</router-link>
+          <div class="button-container">
+            <button type="button" class="btn btn-outline-primary">Resume</button>
+            <DarkModeToggle class="dark-mode-switch" />
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -36,37 +63,95 @@
 
 <script setup>
 import DarkModeToggle from "./DarkModeToggle.vue";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
-const activeSection = ref('about');
+const activeSection = ref('');
+const route = useRoute();
+const burgerCheckbox = ref(null);
 
-const setActiveSection = (section) => {
-  activeSection.value = section;
+// Function to close the menu
+const closeMenu = () => {
+  if (burgerCheckbox.value) {
+    burgerCheckbox.value.checked = false;
+  }
 };
 
+// Watch for route changes to update activeSection
+watch(
+  () => route.path,
+  (newRoutePath) => {
+    if (newRoutePath) {
+      switch (newRoutePath) {
+        case '/about':
+          activeSection.value = 'about';
+          break;
+        case '/experience':
+          activeSection.value = 'experience';
+          break;
+        case '/education':
+          activeSection.value = 'education';
+          break;
+        case '/skills':
+          activeSection.value = 'skills';
+          break;
+        case '/contact':
+          activeSection.value = 'contact';
+          break;
+        default:
+          activeSection.value = '';
+      }
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped>
 .navbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 1000;
+  background-color: var(--white); /* Add background color to prevent content showing through */
+}
+
+body.dark-mode .navbar {
+  background-color: var(--black);
+}
+
+/* Add padding to the body to prevent content from hiding behind the fixed navbar */
+body {
+  padding-top: 80px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.dark-mode-switch {
+  transform: translateY(-10px);
+  /* Adjust this value as needed */
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 2rem; /* Adds equal spacing between all nav items */
+  gap: 2rem;
+  /* Adds equal spacing between all nav items */
 }
 
-.nav-item:hover{
-  color: var(--dark-text);
+.nav-item:hover {
+  color: var(--black);
 }
 
-.nav-item, .navbar-nav > * {
+.nav-item,
+.navbar-nav > * {
   display: flex;
   align-items: center;
 }
-
 
 .navbar-nav .btn-outline-primary {
   margin-left: 2rem;
@@ -77,27 +162,22 @@ const setActiveSection = (section) => {
   margin: 0;
 }
 
-
 #navbarNavAltMarkup {
   transition: all 0.3s ease-in-out;
 }
 
-
 /* Light mode - current selection */
 .nav-item.active {
-  border-bottom: 2px solid var(--dark-text);
-  color: var(--dark-text);
+  border-bottom: 1px solid var(--black);
+  color: var(--black);
   font-weight: bold;
 }
 
-
 /* Dark mode - current selection */
 body.dark-mode .nav-link.active {
-  border-bottom: 2px solid var(--primary-text);
-  color: var(--primary-text);
+  border-bottom: 1px solid var(--white) !important; 
+  color: var(--white);
 }
-
-
 
 @media (max-width: 991.98px) {
   #navbarNavAltMarkup {
@@ -105,9 +185,11 @@ body.dark-mode .nav-link.active {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--light-background);
+    /* background-color: var(--primary-blue); */
+    background-color: var(--red);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    border-radius: 4px;
   }
 
   #navbarNavAltMarkup .navbar-nav {
@@ -119,20 +201,54 @@ body.dark-mode .nav-link.active {
   #navbarNavAltMarkup .nav-item {
     width: 100%;
     text-align: left;
+    color: var(--white);
+  }
+
+  /* Add dark mode styling */
+  body.dark-mode #navbarNavAltMarkup {
+    background-color: var(--dark-gray);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /*  small screen dark mode*/
+  body.dark-mode .btn-outline-primary {
+    color: var(--white);
+    outline: 1px solid var(--blue);
+  }
+
+  body.dark-mode .btn-outline-primary:hover {
+    background-color: var(--blue);
+    color: var(--pure-white);
   }
 
   .navbar-nav .btn-outline-primary {
     margin-left: 0;
-    margin-top: 1rem; /* Adds space above button on mobile */
+    margin-top: 1rem;
+    /* Adds space above button on mobile */
   }
+
   .navbar-nav {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem; /* Reduced spacing for mobile view */
+    width: 100%;
   }
- 
-}
 
+  .button-container {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-top: 1px solid var(--white);
+  }
+
+  .nav-item.active {
+    border-bottom: 1px solid var(--white);
+    color: var(--white);
+    font-weight: bold;
+  }
+  body.dark-mode .button-container {
+    border-top: 1px solid var(--white);
+  }
+}
 
 .burger-wrapper {
   display: none;
@@ -149,7 +265,7 @@ body.dark-mode .nav-link.active {
   position: relative;
   width: 40px;
   height: 35px;
-  color: var(--dark-text);
+  color: var(--black);
   background: transparent;
   cursor: pointer;
   display: block;
@@ -164,7 +280,7 @@ body.dark-mode .nav-link.active {
   position: absolute;
   height: 4px;
   width: 100%;
-  background: var(--dark-background);
+  background: var(--red);
   border-radius: 12px;
   opacity: 1;
   left: 0;
@@ -173,11 +289,11 @@ body.dark-mode .nav-link.active {
 }
 
 body.dark-mode .burger-1 span {
-  background-color: var(--primary-background);
+  background-color: var(--pure-white);
 }
 
-body.dark-mode .nav-item{
-  color: var(--primary-text);
+body.dark-mode .nav-item {
+  color: var(--dark-gray);
 }
 
 .burger-1 span:nth-of-type(1) {
@@ -214,7 +330,7 @@ body.dark-mode .nav-item{
   left: 5px;
 }
 
-.burger-1 i{
+.burger-1 i {
   font-size: 24px;
 }
 
@@ -224,25 +340,51 @@ body.dark-mode .nav-item{
 }
 
 body.dark-mode .btn-outline-primary {
-  outline: 1px solid transparent; 
+  outline: 1px solid transparent;
   border: none;
 }
 
 body.dark-mode .btn-outline-primary {
-  color: var(--primary);
-  outline: 1px solid var(--secondary);
+  color: var(--white);
+  outline: 1px solid var(--white);
 }
+
 body.dark-mode .btn-outline-primary:hover {
-  background-color: var(--secondary);
-  color: white;
+  background-color: var(--primary-blue);
+  color: var(--pure-white);
 }
 
-body.dark-mode .nav-item:hover{
-  color: var(--secondary);
+body.dark-mode .nav-item:hover {
+  color: var(--primary-blue);
 }
 
-body.dark-mode .nav-item{
-  color: var(--accent);
+body.dark-mode .nav-item {
+  color: var(--pure-white);
 }
 
+.btn-outline-primary {
+  color: var(--red);
+  outline: 1px solid var(--red);
+  border: none;
+}
+
+.btn-outline-primary:hover {
+  color: var(--white);
+  background-color: var(--red);
+  border: none;
+}
+
+@media (max-width: 991.98px) {
+  .btn-outline-primary {
+    color: var(--white);
+    outline: 1px solid var(--white);
+    border: none;
+  }
+
+  .btn-outline-primary:hover {
+    color: var(--red);
+    background-color: var(--white);
+    border: none;
+  }
+}
 </style>
