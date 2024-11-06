@@ -540,6 +540,8 @@ body.dark-mode .text-muted {
   background-color: var(--red);
 }
 
+
+
 /* background animage */
 
 .wave-container {
@@ -585,9 +587,13 @@ body.dark-mode .dark-mode-wave {
 }
 
 body.dark-mode .card:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 8px 16px var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px var(--red);
+  transition: all 0.3s ease;
 }
 /* add transaction and animation */
 /* Add these animation styles */

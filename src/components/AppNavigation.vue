@@ -346,7 +346,7 @@ body.dark-mode .btn-outline-primary {
 
 body.dark-mode .btn-outline-primary {
   color: var(--white);
-  outline: 1px solid var(--white);
+  outline: 1px solid var(--primary-blue);
 }
 
 body.dark-mode .btn-outline-primary:hover {
