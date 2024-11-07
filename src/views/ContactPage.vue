@@ -51,42 +51,12 @@
           </div>
         </div>
 
-        <!-- Right Column: Contact Form and Social Links -->
+        <!-- Right Column: Images -->
         <div class="col-lg-7 contact-container">
-          <div class="contact-form-container">
-            <h2 class="text-center mb-4">Send Me a Message</h2>
-            <form @submit.prevent="handleSubmit">
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="name" v-model="formData.name" placeholder="Your Name">
-                    <label for="name">Your Name</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="email" v-model="formData.email" placeholder="Your Email">
-                    <label for="email">Your Email</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="subject" v-model="formData.subject" placeholder="Subject">
-                    <label for="subject">Subject</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-floating">
-                    <textarea class="form-control" id="message" v-model="formData.message" placeholder="Your Message" style="height: 150px"></textarea>
-                    <label for="message">Your Message</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <!-- use MyButton component for the button -->
-                  <MyButton type="submit"  class="btn w-100 fw-bold action-btn" >Send</MyButton>
-                </div>
-              </div>
-            </form>
+          <div class="img-container">
+            <!-- Add images for light and dark mode -->
+            <img src="@/assets/contact-light.svg" alt="Contact Light" class="img-fluid mb-4 light-mode-image" />
+            <img src="@/assets/contact-dark.svg" alt="Contact Dark" class="img-fluid mb-4 dark-mode-image" />
           </div>
         </div>
       </div>
@@ -95,19 +65,7 @@
 </template>
 
 <script setup>
-import MyButton from '@/components/MyButton.vue';
-import { ref } from 'vue'
 
-const formData = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: ''
-})
-
-const handleSubmit = () => {
-  console.log('Form submitted:', formData.value)
-}
 </script>
 
 <style scoped>
@@ -147,7 +105,7 @@ body.dark-mode3 .contact-card a {
   color: var(--primary-blue);
 }
 
-.contact-form-container {
+/* .contact-form-container {
 background: #fff;
 padding: 2.5rem;
 border-radius: 15px;
@@ -158,7 +116,7 @@ body.dark-mode .contact-form-container {
 }
 body.dark-mode .contact-form-container > h2 {
   color: var(--white);
-}
+} */
 
 .form-floating {
   margin-bottom: 1rem;
@@ -275,6 +233,33 @@ body.dark-mode .action-btn{
 }
 
 
+/* Hide dark mode image by default */
+.dark-mode-image {
+  display: none;
+}
+
+/* Show dark mode image and hide light mode image in dark mode */
+body.dark-mode .dark-mode-image {
+  display: block;
+}
+body.dark-mode .light-mode-image {
+  display: none;
+}
+
+/* Hide both light and dark mode images for small screen size */
+@media (max-width: 767px) {
+  .light-mode-image {
+    display: none;
+  }
+  /* Show dark mode image and hide light mode image in dark mode */
+body.dark-mode .dark-mode-image {
+  display: block;
+}
+body.dark-mode .light-mode-image {
+  display: none;
+}
+  
+}
 
 
 </style>

@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <router-link class="navbar-brand" to="/">
         <img class="logo" src="../assets/logo.png" alt="logo" />
-      </a>
+      </router-link>
         <!-- Burger Menu -->
         <div class="burger-wrapper d-lg-none">
         <label class="burger-1" for="burger">
@@ -21,6 +21,12 @@
       </div>
       <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
+          <router-link
+            class="nav-item nav-link"
+            :class="{ active: activeSection === 'home' }"
+            to="/"
+            @click="closeMenu"
+          >Home</router-link>
           <router-link
             class="nav-item nav-link"
             :class="{ active: activeSection === 'about' }"
@@ -83,6 +89,9 @@ watch(
   (newRoutePath) => {
     if (newRoutePath) {
       switch (newRoutePath) {
+        case '/':
+          activeSection.value = 'home';
+          break;
         case '/about':
           activeSection.value = 'about';
           break;
@@ -168,14 +177,14 @@ body {
 
 /* Light mode - current selection */
 .nav-item.active {
-  border-bottom: 1px solid var(--black);
+  border-bottom: 2px solid var(--red);
   color: var(--black);
   font-weight: bold;
 }
 
 /* Dark mode - current selection */
 body.dark-mode .nav-link.active {
-  border-bottom: 1px solid var(--white) !important; 
+  border-bottom: 2px solid var(--primary-blue) !important; 
   color: var(--white);
 }
 
@@ -293,7 +302,7 @@ body.dark-mode .burger-1 span {
 }
 
 body.dark-mode .nav-item {
-  color: var(--dark-gray);
+  color: var(--light-gray);
 }
 
 .burger-1 span:nth-of-type(1) {
@@ -355,7 +364,7 @@ body.dark-mode .btn-outline-primary:hover {
 }
 
 body.dark-mode .nav-item:hover {
-  color: var(--primary-blue);
+  color: var(--pure-white);
 }
 
 body.dark-mode .nav-item {

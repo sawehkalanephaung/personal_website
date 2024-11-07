@@ -1,10 +1,15 @@
 <template>
+    <d class="container-fluid ">
+      <div class="wave-container">
+      <img src="@/assets/wave_animation_light.svg" alt="wave animation" class="wave-background light-mode-wave" />
+      <img src="@/assets/wave_animation_dark.svg" alt="wave animation" class="wave-background dark-mode-wave" />
+    </div>
   <div class="skills container py-5  text-start">
     <h1 class=" mb-5">My Skills & Expertise</h1>
 
     <!-- Programming Languages -->
     <div class="skill-section mb-5">
-      <h2 class="border-bottom pb-2">Programming Languages</h2>
+      <h2 class="custom-border-bottom pb-2">Programming Languages</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(skill, index) in programmingLanguages" :key="index">
           <div class="skill-card">
@@ -17,7 +22,7 @@
 
     <!-- Frameworks -->
     <div class="skill-section mb-5">
-      <h2 class="border-bottom pb-2">Frameworks & Libraries</h2>
+      <h2 class="custom-border-bottom pb-2">Frameworks & Libraries</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(framework, index) in frameworks" :key="index">
           <div class="skill-card">
@@ -30,7 +35,7 @@
 
     <!-- Tools -->
     <div class="skill-section">
-      <h2 class="border-bottom pb-2">Development Tools</h2>
+      <h2 class="custom-border-bottom pb-2">Development Tools</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(tool, index) in tools" :key="index">
           <div class="skill-card">
@@ -41,6 +46,7 @@
       </div>
     </div>
   </div>
+  </d>
 </template>
 
 <script setup>
@@ -120,4 +126,55 @@ body.dark-mode .skill-name {
 body.dark-mode .skill-section h2 {
   color: var(--white);
 }
+
+.custom-border-bottom {
+  border-bottom: 2px solid #ff4081;
+}
+
+body.dark-mode .custom-border-bottom {
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+.wave-container {
+  position: fixed;
+  top: 40vh; /* Moves the wave down by 20% of viewport height */
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+
+.wave-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+}
+
+.container-fluid {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+
+.light-mode-wave {
+  display: block;
+}
+
+.dark-mode-wave {
+  display: none;
+} 
+
+body.dark-mode .light-mode-wave {
+  display: none;
+}
+
+body.dark-mode .dark-mode-wave {
+  display: block;
+}
+
 </style>

@@ -10,8 +10,10 @@ $light-mode-colors: (
   "pure-white": #ffffff,
   "background": #f8f9fa,
   "primary-blue":#1877F2,
-  "hightlight":  #f0eaeaf1
-);
+  "hightlight":  #f0eaeaf1,
+    "big-cursor-color": rgba(255, 0, 0, 0.3),
+  "small-cursor-color": rgb(255, 0, 0));
+
 
 // Dark mode colors
 $dark-mode-colors: (
@@ -24,8 +26,10 @@ $dark-mode-colors: (
   "pure-white": #FFFFFF,
   "light-gray": #9199A1,
   "primary-blue":#1877F2,
-  "hightlight":  #41454d
-);
+  "hightlight":  #41454d,
+
+  "big-cursor-color": rgba(59, 59, 211, 0.3),
+  "small-cursor-color": rgb(0, 0, 255));
 
 
 // Define CSS Custom Properties (variables)

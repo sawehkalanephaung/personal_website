@@ -26,7 +26,7 @@
             value to any team. I am excited to apply my creative ideas and
             commitment to your company.</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-startn ">
-            <MyButton @click="goToContact" class="btn btn-primary btn-lg px-4 me-md-2 action-btn  mt-4">Contact</MyButton>
+            <MyButton @click="previewResume" class="btn btn-primary btn-lg px-4 me-md-2 action-btn  mt-4">Resume</MyButton>
           </div>
 
         </div>
@@ -37,13 +37,16 @@
 
 <script setup>
 import MyButton from '@/components/MyButton.vue';
-import { useRouter } from 'vue-router';
 import { onMounted } from 'vue';
 
-const router = useRouter();
-
-const goToContact = () => {
-  router.push({ name: 'Contact' });
+function previewResume() {
+  const resumePath = '/Resume.pdf'; // Path relative to the public directory
+  const link = document.createElement('a');
+  link.href = resumePath;
+  link.target = '_blank'; 
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 onMounted(() => {

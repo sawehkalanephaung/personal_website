@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid position-relative">
   <div id="app">
+    <CustomCursor/>
+    <button @click="toggleMode">Toggle Mode</button>
     <AppNavigation />
     <router-view></router-view>
 
@@ -10,7 +12,19 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import AppNavigation from './components/AppNavigation.vue';
+import CustomCursor from './components/CustomCursor.vue';
+
+
+// Define a ref for dark mode state
+const isDarkMode = ref(false);
+
+// Function to toggle dark mode
+const toggleMode = () => {
+  isDarkMode.value = !isDarkMode.value;
+  document.body.classList.toggle('dark-mode', isDarkMode.value);
+};
 </script>
 
 <style>
@@ -20,8 +34,10 @@ import AppNavigation from './components/AppNavigation.vue';
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+  height: 100vh;
+  position: relative;
+  cursor: none; /* Hide default mouse pointer */
 }
-
 
 </style>

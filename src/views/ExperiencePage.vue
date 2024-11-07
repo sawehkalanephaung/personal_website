@@ -6,8 +6,7 @@
     </div>
     <div class="container col-xxl-8 px-4 py-5 ">
       <div class="col-10 col-sm-8 col-lg-6 mt-5">
-        <h1 class="display-6 fw-bold lh-1 text-start">Experience</h1>
-        <hr class="w-100 border border-1 opacity-50 mb-4">
+        <h1 class="display-6 fw-bold lh-1 text-start title-border ">Experience</h1>
       </div>      
       <div class="col-sm-12 mb-4 text-start">
         <div class="card">
@@ -619,6 +618,25 @@ body.dark-mode .card:hover {
     transform: translateY(0);
   }
 }
+/* .title-border {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
 
+
+.title-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 220px; 
+  border-bottom: 3px solid var(--red);
+}
+
+
+body.dark-mode .title-border::after {
+  border-bottom-color: var(--primary-blue);
+} */
 
   </style>

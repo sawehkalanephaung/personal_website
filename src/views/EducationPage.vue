@@ -5,16 +5,17 @@
       <img src="@/assets/wave_animation_dark.svg" alt="wave animation" class="wave-background dark-mode-wave" />
     </div>
     <div class="container col-xxl-8 px-4 py-5 ">
-      <div class="col-12 mb-5 text-start">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Education</h1>
+      <div class="col-12 mb-5 mt-5 text-start">
+        <h1 class="display-5 fw-bold lh-1 mb-3 title-border">Education</h1>
         <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum distinctio voluptatum ut voluptatibus, accusantium quae explicabo repudiandae iure reprehenderit ab vero, quod ullam rem, reiciendis voluptatem! Delectus hic laboriosam vero.</p>
-      </div>      <!-- List all education here -->
+      </div>     
+       <!-- List all education here -->
 <div class="timeline">
   <div class="timeline-item left">
-    <div class="card bg-light">
-      <div class="card-bodyb text-end">
-        <h5 class="card-title">Bachelor of Computer Science</h5>
-        <h6 class="card-subtitle mb-2 text-muted">University of Example | 2020-2024</h6>
+    <div class="card card-bg">
+      <div class="card-body text-end">
+        <h5 class="card-title fw-bold">Bachelor of Computer Science</h5>
+        <h6 class="card-subtitle mb-2 ">University of Example | 2020-2024</h6>
         <ul class="list-unstyled">
           <li>Major in Software Engineering</li>
           <li>GPA: 3.8/4.0</li>
@@ -26,10 +27,10 @@
   </div>
 
   <div class="timeline-item right">
-    <div class="card bg-light">
+    <div class="card card-bg">
       <div class="card-body text-start">
-        <h5 class="card-title">High School Diploma</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Example High School | 2016-2020</h6>
+        <h5 class="card-title fw-bold">High School Diploma</h5>
+        <h6 class="card-subtitle mb-2 ">Example High School | 2016-2020</h6>
         <ul class="list-unstyled">
           <li>Advanced Placement in Computer Science</li>
           <li>Student Council Technology Officer</li>
@@ -196,5 +197,33 @@ body.dark-mode .light-mode-wave {
 body.dark-mode .dark-mode-wave {
   display: block;
 }
+
+
+.title-border {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+
+.title-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Adjust this value to your desired width */
+  max-width: 220px; /* Set a maximum width for the line */
+  border-bottom: 3px solid var(--red);
+}
+
+/* For dark mode support */
+body.dark-mode .title-border::after {
+  border-bottom-color: var(--primary-blue);
+}
+
+body.dark-mode .card-bg{
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
   </style>
   
