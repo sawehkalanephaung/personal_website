@@ -618,25 +618,13 @@ body.dark-mode .card:hover {
     transform: translateY(0);
   }
 }
-/* .title-border {
-  position: relative;
-  padding-bottom: 0.5rem;
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+.wave-background {
+  display: none;
 }
-
-
-.title-border::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  max-width: 220px; 
-  border-bottom: 3px solid var(--red);
+  
 }
-
-
-body.dark-mode .title-border::after {
-  border-bottom-color: var(--primary-blue);
-} */
 
   </style>

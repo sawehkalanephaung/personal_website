@@ -37,7 +37,6 @@
 
 <script setup>
 import MyButton from '@/components/MyButton.vue';
-import { onMounted } from 'vue';
 
 function previewResume() {
   const resumePath = '/Resume.pdf'; // Path relative to the public directory
@@ -49,24 +48,7 @@ function previewResume() {
   document.body.removeChild(link);
 }
 
-onMounted(() => {
-  const text = document.querySelector(".sec-text");
 
-  const textLoad = () => {
-    setTimeout(() => {
-      text.textContent = "Front-End Developer";
-    }, 0);
-    setTimeout(() => {
-      text.textContent = "UX & UI Developer"
-    }, 4000);
-    setTimeout(() => {
-      text.textContent = "Freelencer"
-    }, 8000)
-
-  }
-  textLoad();
-  setInterval(textLoad, 12000)
-})
 </script>
 
 <style scoped>
@@ -100,48 +82,6 @@ body.dark-mode .text {
   margin-right: 10px;
 }
 
-/* Dark mode */
-body.dark-mode .first-text,
-body.dark-mode h1 {
-  color: var(--white);
-}
-
-.sec-text:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--white);
-  border-left: 2px solid var(--red);
-  animation: animate 4s steps(12) infinite;
-}
-
-/* Dark mode  */
-body.dark-mode .sec-text:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--charcoal);
-  border-left: 2px solid var(--blue);
-  animation: animate 4s steps(12) infinite;
-}
-
-@keyframes animate {
-
-  40%,
-  60% {
-    left: calc(100% + 4px);
-  }
-
-  100% {
-    left: 0%;
-  }
-}
 
 .action-btn {
   color: var(--white);
@@ -212,4 +152,84 @@ body.dark-mode .light-mode-wave {
 body.dark-mode .dark-mode-wave {
   display: block;
 }
+
+
+/* Responsive styles */
+
+@media screen and (max-width: 1024px) {
+  .img-fluid {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
+
+  .row {
+    flex-direction: column-reverse !important;
+  }
+
+  .text-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .col-lg-6 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .d-md-flex {
+    justify-content: center !important;
+  }
+
+  .wave-container {
+    display: none;
+  }
+
+  p.fs-5 {
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img-fluid {
+    display: none;
+  }
+
+  .text {
+    font-size: 1.5rem;
+  }
+
+  h1.display-5 {
+    font-size: 2rem;
+  }
+
+  .py-5 {
+    padding: 1rem 0 !important;
+  }
+
+  .g-5 {
+    --bs-gutter-y: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .img-fluid {
+    max-width: 250px;
+  }
+
+  .text {
+    font-size: 1.25rem;
+  }
+
+  h1.display-5 {
+    font-size: 1.75rem;
+  }
+
+  p.fs-5 {
+    font-size: 1rem !important;
+  }
+}
+
+
 </style>

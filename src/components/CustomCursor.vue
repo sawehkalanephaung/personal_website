@@ -21,8 +21,7 @@
   
       // Update big cursor position with a delay
       bigCursor.value.style.transform = `translate(${clientX - 34}px, ${clientY - 22}px)`;
-    //   bigCursor.value.style.left = `${clientX}px`;
-    //   bigCursor.value.style.top = `${clientY}px`;
+
 
 
     });
@@ -32,7 +31,7 @@
     width: 44px;
     height: 44px;
     background-color: var(--big-cursor-color);
-    z-index: 998;
+    z-index: 1001;
     position: fixed;
     border-radius: 50%;
     pointer-events: none;
@@ -44,7 +43,7 @@
     width: 14px;
     height: 14px;
     background-color: var(--small-cursor-color);
-    z-index: 999;
+    z-index: 1002; 
     position: fixed;
     border-radius: 50%;
     pointer-events: none;

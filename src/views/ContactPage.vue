@@ -248,18 +248,10 @@ body.dark-mode .light-mode-image {
 
 /* Hide both light and dark mode images for small screen size */
 @media (max-width: 767px) {
-  .light-mode-image {
-    display: none;
+  .light-mode-image,
+  .dark-mode-image {
+    display: none !important;
   }
-  /* Show dark mode image and hide light mode image in dark mode */
-body.dark-mode .dark-mode-image {
-  display: block;
 }
-body.dark-mode .light-mode-image {
-  display: none;
-}
-  
-}
-
 
 </style>

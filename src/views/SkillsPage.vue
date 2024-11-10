@@ -177,4 +177,11 @@ body.dark-mode .dark-mode-wave {
   display: block;
 }
 
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+.wave-background {
+  display: none;
+}
+}
 </style>

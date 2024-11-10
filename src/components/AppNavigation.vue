@@ -4,21 +4,18 @@
       <router-link class="navbar-brand" to="/">
         <img class="logo" src="../assets/logo.png" alt="logo" />
       </router-link>
-        <!-- Burger Menu -->
-        <div class="burger-wrapper d-lg-none">
-        <label class="burger-1" for="burger">
-          <input
-            type="checkbox"
-            id="burger"
-            ref="burgerCheckbox"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-          />
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
+      <!-- Default Bootstrap Burger Menu -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
           <router-link
@@ -28,11 +25,11 @@
             @click="closeMenu"
           >Home</router-link>
           <router-link
-            class="nav-item nav-link"
+            class="nav-item nav-link text-nowrap"
             :class="{ active: activeSection === 'about' }"
             to="/about"
             @click="closeMenu"
-          >About me</router-link>
+          >About Me</router-link>
           <router-link
             class="nav-item nav-link"
             :class="{ active: activeSection === 'experience' }"
@@ -74,12 +71,12 @@ import { useRoute } from 'vue-router';
 
 const activeSection = ref('');
 const route = useRoute();
-const burgerCheckbox = ref(null);
 
 // Function to close the menu
 const closeMenu = () => {
-  if (burgerCheckbox.value) {
-    burgerCheckbox.value.checked = false;
+  const navbarCollapse = document.getElementById('navbarNavAltMarkup');
+  if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+    navbarCollapse.classList.remove('show');
   }
 };
 
@@ -117,19 +114,21 @@ watch(
 </script>
 
 <style scoped>
+
+
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--white); /* Add background color to prevent content showing through */
+  background-color: var(--white);
+  border-bottom: 1px solid var(--hightlight);
 }
 
 body.dark-mode .navbar {
   background-color: var(--black);
 }
 
-/* Add padding to the body to prevent content from hiding behind the fixed navbar */
 body {
   padding-top: 80px;
 }
@@ -142,14 +141,12 @@ body {
 
 .dark-mode-switch {
   transform: translateY(-10px);
-  /* Adjust this value as needed */
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
   gap: 2rem;
-  /* Adds equal spacing between all nav items */
 }
 
 .nav-item:hover {
@@ -166,7 +163,6 @@ body {
   margin-left: 2rem;
 }
 
-/*  Adject the margin for the resume button */
 .btn-outline-primary {
   margin: 0;
 }
@@ -175,14 +171,12 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-/* Light mode - current selection */
 .nav-item.active {
   border-bottom: 2px solid var(--red);
   color: var(--black);
   font-weight: bold;
 }
 
-/* Dark mode - current selection */
 body.dark-mode .nav-link.active {
   border-bottom: 2px solid var(--primary-blue) !important; 
   color: var(--white);
@@ -194,7 +188,6 @@ body.dark-mode .nav-link.active {
     top: 100%;
     left: 0;
     right: 0;
-    /* background-color: var(--primary-blue); */
     background-color: var(--red);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
@@ -213,13 +206,11 @@ body.dark-mode .nav-link.active {
     color: var(--white);
   }
 
-  /* Add dark mode styling */
   body.dark-mode #navbarNavAltMarkup {
     background-color: var(--dark-gray);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
 
-  /*  small screen dark mode*/
   body.dark-mode .btn-outline-primary {
     color: var(--white);
     outline: 1px solid var(--blue);
@@ -233,7 +224,6 @@ body.dark-mode .nav-link.active {
   .navbar-nav .btn-outline-primary {
     margin-left: 0;
     margin-top: 1rem;
-    /* Adds space above button on mobile */
   }
 
   .navbar-nav {
@@ -257,90 +247,6 @@ body.dark-mode .nav-link.active {
   body.dark-mode .button-container {
     border-top: 1px solid var(--white);
   }
-}
-
-.burger-wrapper {
-  display: none;
-}
-
-@media (max-width: 991.98px) {
-  .burger-wrapper {
-    display: block;
-    position: relative;
-  }
-}
-
-.burger-1 {
-  position: relative;
-  width: 40px;
-  height: 35px;
-  color: var(--black);
-  background: transparent;
-  cursor: pointer;
-  display: block;
-}
-
-.burger-1 input {
-  display: none;
-}
-
-.burger-1 span {
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background: var(--red);
-  border-radius: 12px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
-}
-
-body.dark-mode .burger-1 span {
-  background-color: var(--pure-white);
-}
-
-body.dark-mode .nav-item {
-  color: var(--light-gray);
-}
-
-.burger-1 span:nth-of-type(1) {
-  top: 0px;
-  transform-origin: left center;
-}
-
-.burger-1 span:nth-of-type(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.burger-1 span:nth-of-type(3) {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-100%);
-}
-
-.burger-1 input:checked ~ span:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: 0px;
-  left: 5px;
-}
-
-.burger-1 input:checked ~ span:nth-of-type(2) {
-  width: 0%;
-  opacity: 0;
-}
-
-.burger-1 input:checked ~ span:nth-of-type(3) {
-  transform: rotate(-45deg);
-  top: 28px;
-  left: 5px;
-}
-
-.burger-1 i {
-  font-size: 24px;
 }
 
 .logo {
@@ -396,4 +302,22 @@ body.dark-mode .nav-item {
     border: none;
   }
 }
-</style>
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+  box-shadow: none !important;
+}
+
+body.dark-mode .navbar-toggler {
+  border: none;
+  outline: none;
+  box-shadow: none !important;
+}
+.navbar-toggler-icon {
+  filter: invert(28%) sepia(89%) saturate(7491%) hue-rotate(353deg) brightness(97%) contrast(119%);
+}
+
+body.dark-mode .navbar-toggler-icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}</style>

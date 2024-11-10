@@ -225,5 +225,70 @@ body.dark-mode .card-bg{
   color: var(--white);
 }
 
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+.wave-background {
+  display: none;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .timeline {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    float: none;
+    clear: both;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-subtitle {
+    font-size: 1rem;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline {
+    width: 95%;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    text-align: start;
+  }
+
+  .card-subtitle {
+    font-size: 0.9rem;
+    text-align: start;
+  }
+
+  ul li {
+    font-size: 0.8rem;
+    text-align: start;
+  }
+}
   </style>
   
