@@ -5,13 +5,13 @@
       <img src="@/assets/wave_animation_dark.svg" alt="wave animation" class="wave-background dark-mode-wave" />
     </div>
     <div class="container col-xxl-8 px-4 py-5 ">
-      <div class="col-12 mb-5 mt-5 text-start">
-        <h1 class="display-5 fw-bold lh-1 mb-3 title-border">Education</h1>
+      <div class="col-12 mb-5 mt-5 text-start fade-in-down">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Education</h1>
         <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum distinctio voluptatum ut voluptatibus, accusantium quae explicabo repudiandae iure reprehenderit ab vero, quod ullam rem, reiciendis voluptatem! Delectus hic laboriosam vero.</p>
       </div>     
        <!-- List all education here -->
 <div class="timeline">
-  <div class="timeline-item left">
+  <div class="timeline-item left slide-fade-right">
     <div class="card card-bg">
       <div class="card-body text-end">
         <h5 class="card-title fw-bold">Bachelor of Computer Science</h5>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="timeline-item right">
+  <div class="timeline-item right slide-fade-left">
     <div class="card card-bg">
       <div class="card-body text-start">
         <h5 class="card-title fw-bold">High School Diploma</h5>
@@ -50,8 +50,6 @@
   </script>
   
   <style scoped>
-
-
 
 .timeline {
     position: relative;
@@ -86,7 +84,7 @@
     position: absolute;
     width: 25px;
     height: 25px;
-    background-color: white;
+    background-color: var(--red);
     border: 4px solid var(--red);
     top: 50%;
     transform: translateY(-50%);
@@ -94,6 +92,7 @@
     z-index: 1;
   }
   body.dark-mode  .timeline-item::after {
+    background-color: var(--primary-blue);
     border: 4px solid var(--primary-blue);
   }
   
@@ -120,14 +119,18 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
-  .timeline-item .card:hover {
-    box-shadow: 0 8px 16px var(--red);
-    transition: all 0.3s ease;
-  }
-  body.dark-mode .timeline-item .card:hover {
-    box-shadow: 0 8px 16px var(--primary-blue);
-    transition: all 0.3s ease;
-  }
+/* Update the hover animation for cards to be smoother */
+.timeline-item .card:hover {
+  box-shadow: 0 8px 16px var(--red);
+  transform: translateY(-5px);
+  transition: all 0.4s ease;
+}
+
+body.dark-mode .timeline-item .card:hover {
+  box-shadow: 0 8px 16px var(--primary-blue);
+  transform: translateY(-5px);
+  transition: all 0.4s ease;
+}
   
 
   @media screen and (max-width: 768px) {
@@ -199,26 +202,6 @@ body.dark-mode .dark-mode-wave {
 }
 
 
-.title-border {
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-
-.title-border::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%; /* Adjust this value to your desired width */
-  max-width: 220px; /* Set a maximum width for the line */
-  border-bottom: 3px solid var(--red);
-}
-
-/* For dark mode support */
-body.dark-mode .title-border::after {
-  border-bottom-color: var(--primary-blue);
-}
 
 body.dark-mode .card-bg{
   background-color: var(--dark-gray);
@@ -288,6 +271,58 @@ body.dark-mode .card-bg{
   ul li {
     font-size: 0.8rem;
     text-align: start;
+  }
+}
+
+
+/* Add these new animation classes */
+.fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-fade-right {
+  animation: slideFadeRight 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.slide-fade-left {
+  animation: slideFadeLeft 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFadeRight {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFadeLeft {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
   </style>

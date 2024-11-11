@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid position-relative">
   <div id="app">
+    <LoadingScreen />
     <CustomCursor/>
     <button @click="toggleMode">Toggle Mode</button>
     <AppNavigation />
@@ -15,6 +16,7 @@
 import { ref } from 'vue';
 import AppNavigation from './components/AppNavigation.vue';
 import CustomCursor from './components/CustomCursor.vue';
+import LoadingScreen from './components/LoadingScreen.vue';
 
 
 // Define a ref for dark mode state

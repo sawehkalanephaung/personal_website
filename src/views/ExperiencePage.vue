@@ -6,9 +6,9 @@
     </div>
     <div class="container col-xxl-8 px-4 py-5 ">
       <div class="col-10 col-sm-8 col-lg-6 mt-5">
-        <h1 class="display-6 fw-bold lh-1 text-start title-border ">Experience</h1>
+        <h1 class="display-6 fw-bold lh-1 text-start ">Experience</h1>
       </div>      
-      <div class="col-sm-12 mb-4 text-start">
+      <div class="col-sm-12 mb-4 text-start ">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title fs-3 ">Senior Project: ApartEase</h5>

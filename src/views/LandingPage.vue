@@ -6,11 +6,11 @@
    </div>
    <div class="container h-100 d-flex align-items-center hero-bennner">
      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-       <div class="col-12 col-lg-6 d-flex justify-content-center">
+       <div class="col-12 col-lg-6 d-flex justify-content-center slide-in-right">
          <img src="@/assets/header.svg" class="img-fluid w-200 rounded-4" alt="image" width="700"
            height="500" loading="lazy" />
        </div>
-       <div class="col-lg-6 text-start">
+       <div class="col-lg-6 text-start slide-in-left">
           <h1 class="display-5 fw-bold lh-1 mb-3">
            Hi there !
          </h1>
@@ -239,6 +239,40 @@ body.dark-mode .dark-mode-wave {
     text-align: center;
     margin: 0 auto;
     display: block;
+  }
+}
+
+
+/* Add these new animation classes */
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 </style>

@@ -2,17 +2,17 @@
   <div class="contact-page min-vh-100 d-flex align-items-center justify-content-center">
     <div class="container py-5">
       <div class="row justify-content-center align-items-center">
-        <div class="col-lg-5 text-center text-lg-start contact-container">
+        <div class="col-lg-5 text-center text-lg-start contact-container  slide-in-left">
           <h1
-            class="display-4 fw-bold lh-1 mb-3 "
+            class="display-4 fw-bold lh-1 mb-3 fade-in"
           >
             Get in touch
           </h1>
-          <p class="col-lg-10 fs-4">
+          <p class="col-lg-10 fs-4 fade-in">
             Please feel free to contact me
           </p>
           <div class="contact-info mb-4">
-            <div  class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3" >
+            <div  class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3 fade-up" style="animation-delay: 0.2s" >
             <a  href="mailto:your.ehkalanephaung96@gmail.com" style="text-decoration: none;">  <i class="fas fa-envelope me-3 icon-resize p-2"></i> </a> 
               <div class="contact-details">
                 <h3 class="mb-0">Email</h3>
@@ -20,14 +20,14 @@
               </div>
             </div>
 
-            <div class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3">
+            <div class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3 fade-up" style="animation-delay: 0.4s">
               <a href="tel:+66985305017" style="text-decoration: none;"><i class="fas fa-phone  me-3 icon-resize p-2"></i></a>
               <div class="contact-details">
                 <h3>Phone</h3>
                 <a class="text-decoration" href="tel:+66985305017">+66 985305017</a>
               </div>
             </div>
-            <div class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3">
+            <div class="contact-item d-flex align-items-center rounded py-3 px-4 card_bg mb-3 fade-up" style="animation-delay: 0.6s">
               <i class="fas fa-map-marker-alt  me-3 icon-resize p-2"></i>
               <div class="contact-details">
                 <h3>Location</h3>
@@ -36,27 +36,39 @@
             </div>
           </div>
           <div class="social-icons fs-2 text-center mt-4">
-            <a href="#" class="text-primary me-4 linkedin">
+            <a href="#" class="text-primary me-4 linkedin pop-in" style="animation-delay: 0.8s">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="#" class="text-primary me-4 github">
+            <a
+              href="#"
+              class="text-primary me-4 github pop-in"
+              style="animation-delay: 0.9s"
+            >
               <i class="fab fa-github"></i>
             </a>
-            <a href="#" class="text-primary me-4 instagram">
+            <a
+              href="#"
+              class="text-primary me-4 instagram pop-in"
+              style="animation-delay: 1s"
+            >
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="text-primary me-4 facebook">
+            <a
+              href="#"
+              class="text-primary me-4 facebook pop-in"
+              style="animation-delay: 1.1s"
+            >
               <i class="fab fa-facebook"></i>
             </a>
           </div>
         </div>
 
         <!-- Right Column: Images -->
-        <div class="col-lg-7 contact-container">
+        <div class="col-lg-7 contact-container slide-in-right">
           <div class="img-container">
             <!-- Add images for light and dark mode -->
-            <img src="@/assets/contact-light.svg" alt="Contact Light" class="img-fluid mb-4 light-mode-image" />
-            <img src="@/assets/contact-dark.svg" alt="Contact Dark" class="img-fluid mb-4 dark-mode-image" />
+            <img src="@/assets/contact-light.svg" alt="Contact Light" class="img-fluid mb-4 light-mode-image fade-in" />
+            <img src="@/assets/contact-dark.svg" alt="Contact Dark" class="img-fluid mb-4 dark-mode-image fade-in" />
           </div>
         </div>
       </div>
@@ -254,4 +266,91 @@ body.dark-mode .light-mode-image {
   }
 }
 
+/* New animation classes */
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+  opacity: 0;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.pop-in {
+  animation: popIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced hover animations for social icons */
+.social-icons i {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icons a:hover i {
+  transform: translateY(-5px) scale(1.1);
+}
 </style>

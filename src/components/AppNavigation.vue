@@ -55,7 +55,7 @@
             @click="closeMenu"
           >Contact</router-link>
           <div class="button-container">
-            <button type="button" class="btn btn-outline-primary">Resume</button>
+            <button  @click="previewResume"  type="button" class="btn btn-outline-primary">Resume</button>
             <DarkModeToggle class="dark-mode-switch" />
           </div>
         </div>
@@ -79,6 +79,17 @@ const closeMenu = () => {
     navbarCollapse.classList.remove('show');
   }
 };
+
+// preview resume
+function previewResume() {
+  const resumePath = '/Resume.pdf';
+  const link = document.createElement('a');
+  link.href = resumePath;
+  link.target = '_blank'; 
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 // Watch for route changes to update activeSection
 watch(

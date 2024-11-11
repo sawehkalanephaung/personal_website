@@ -8,7 +8,7 @@
     <h1 class=" mb-5">My Skills & Expertise</h1>
 
     <!-- Programming Languages -->
-    <div class="skill-section mb-5">
+    <div class="skill-section mb-5 fade-in">
       <h2 class="custom-border-bottom pb-2">Programming Languages</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(skill, index) in programmingLanguages" :key="index">
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Frameworks -->
-    <div class="skill-section mb-5">
+    <div class="skill-section mb-5 fade-in">
       <h2 class="custom-border-bottom pb-2">Frameworks & Libraries</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(framework, index) in frameworks" :key="index">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Tools -->
-    <div class="skill-section">
+    <div class="skill-section fade-in">
       <h2 class="custom-border-bottom pb-2">Development Tools</h2>
       <div class="row g-4">
         <div class="col-6 col-md-3" v-for="(tool, index) in tools" :key="index">
@@ -184,4 +184,58 @@ body.dark-mode .dark-mode-wave {
   display: none;
 }
 }
+
+/* Add these new animation classes */
+.fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.skill-card {
+  animation: popIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Update the hover animation for skill cards */
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 </style>
