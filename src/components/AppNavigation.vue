@@ -55,7 +55,7 @@
             @click="closeMenu"
           >Contact</router-link>
           <div class="button-container">
-            <button  @click="previewResume"  type="button" class="btn btn-outline-primary">Resume</button>
+            <button  @click="previewResume"  type="button" class="btn button">Resume</button>
             <DarkModeToggle class="dark-mode-switch" />
           </div>
         </div>
@@ -170,11 +170,11 @@ body {
   align-items: center;
 }
 
-.navbar-nav .btn-outline-primary {
+.navbar-nav .button{
   margin-left: 2rem;
 }
 
-.btn-outline-primary {
+.button {
   margin: 0;
 }
 
@@ -222,17 +222,13 @@ body.dark-mode .nav-link.active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
 
-  body.dark-mode .btn-outline-primary {
-    color: var(--white);
-    outline: 1px solid var(--blue);
-  }
 
-  body.dark-mode .btn-outline-primary:hover {
+  body.dark-mode .button:hover {
     background-color: var(--blue);
     color: var(--pure-white);
   }
 
-  .navbar-nav .btn-outline-primary {
+  .navbar-nav .button{
     margin-left: 0;
     margin-top: 1rem;
   }
@@ -265,20 +261,6 @@ body.dark-mode .nav-link.active {
   height: 3rem;
 }
 
-body.dark-mode .btn-outline-primary {
-  outline: 1px solid transparent;
-  border: none;
-}
-
-body.dark-mode .btn-outline-primary {
-  color: var(--white);
-  outline: 1px solid var(--primary-blue);
-}
-
-body.dark-mode .btn-outline-primary:hover {
-  background-color: var(--primary-blue);
-  color: var(--pure-white);
-}
 
 body.dark-mode .nav-item:hover {
   color: var(--pure-white);
@@ -288,30 +270,71 @@ body.dark-mode .nav-item {
   color: var(--pure-white);
 }
 
-.btn-outline-primary {
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
   color: var(--red);
-  outline: 1px solid var(--red);
-  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 var(--red);
+  outline: none;
 }
 
-.btn-outline-primary:hover {
+.button:hover {
   color: var(--white);
-  background-color: var(--red);
-  border: none;
+  box-shadow: inset 0 -100px 0 0 var(--red);
 }
+
+.button:active {
+  transform: scale(0.9);
+}
+
+/* Dark mode styles */
+body.dark-mode .button{
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  box-shadow: inset 0 0 0 0 var(--primary-blue);
+}
+
+body.dark-mode .button:hover {
+  color: var(--pure-white);
+  box-shadow: inset 0 -100px 0 0 var(--primary-blue);
+}
+
+
 
 @media (max-width: 991.98px) {
-  .btn-outline-primary {
+  .button {
     color: var(--white);
-    outline: 1px solid var(--white);
-    border: none;
+    border: 2px solid var(--white);
+    box-shadow: inset 0 0 0 0 var(--white);
   }
 
-  .btn-outline-primary:hover {
+  .button:hover {
     color: var(--red);
-    background-color: var(--white);
-    border: none;
+    box-shadow: inset 0 -100px 0 0 var(--white);
   }
+
+  body.dark-mode .button{
+    color: var(--white);
+    border: 2px solid var(--primary-blue);
+    box-shadow: inset 0 0 0 0 var(--primary-blue);
+  }
+
+  body.dark-mode .button:hover {
+    color: var(--pure-white);
+    box-shadow: inset 0 -100px 0 0 var(--primary-blue);
+  }
+
+
 }
 
 .navbar-toggler {
