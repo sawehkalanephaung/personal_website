@@ -44,12 +44,6 @@
           >Education</router-link>
           <router-link
             class="nav-item nav-link"
-            :class="{ active: activeSection === 'skills' }"
-            to="/skills"
-            @click="closeMenu"
-          >Skills</router-link>
-          <router-link
-            class="nav-item nav-link"
             :class="{ active: activeSection === 'contact' }"
             to="/contact"
             @click="closeMenu"

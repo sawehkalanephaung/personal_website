@@ -17,8 +17,6 @@ import { ref } from 'vue';
 import AppNavigation from './components/AppNavigation.vue';
 import CustomCursor from './components/CustomCursor.vue';
 import LoadingScreen from './components/LoadingScreen.vue';
-
-
 // Define a ref for dark mode state
 const isDarkMode = ref(false);
 
