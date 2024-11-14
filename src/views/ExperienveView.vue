@@ -14,18 +14,18 @@
             <img :src="project.image" alt="Project Image" class="project-image" />
 
             <div class="project-details">
-              <h5 class="card-title fs-3">{{ project.title }}</h5>
-              <h6 class="card-subtitle mb-2 fs-5">{{ project.role }} | {{ project.duration }}</h6>
-              <p class="card-text fs-6">{{ project.description }}</p>
-              <h6 class="card-subtitle mb-2 fs-6">Tools</h6>
+              <h5 class="card-title fs-3 mb-4 fw-bold">{{ project.title }}</h5>
+              <h6 class="card-subtitle mb-3 fs-5">{{ project.role }} | {{ project.duration }}</h6>
+              <p class="card-text fs-5 mb-5">{{ project.description }}</p>
+              <h6 class="card-subtitle mb-4 fs-5 fw-bold">Tools</h6>
               <div class="dev-tools">
                 <li v-for="(tool, toolIndex) in project.tools" :key="toolIndex" class="icons">
                   <button class="Btn">
-                    <div class="sign">
-                      <i :class="tool.icon"></i>
-                    </div>
+                    <div class="sign" v-if="tool.svg" v-html="tool.svg"></div>
+                    <div class="sign" v-else><i :class="tool.icon"></i></div>
                     <div class="text">{{ tool.name }}</div>
                   </button>
+
                 </li>
               </div>
               <div class="justify-content-end d-grid gap-2 d-md-flex justify-content-md-end">
@@ -114,12 +114,6 @@ body.dark-mode .project-card {
   background-color: var(--dark-gray);
 }
 
-body.dark-mode .card-title,
-body.dark-mode .card-subtitle,
-body.dark-mode .card-text,
-body.dark-mode .text-muted {
-  color: var(--white);
-}
 
 body.dark-mode .project-card:hover {
   box-shadow: 0 8px 16px var(--primary-blue);
@@ -179,6 +173,9 @@ body.dark-mode .dev-tools {
 
 body.dark-mode .card {
   background-color: var(--dark-gray);
+}
+.card-title{
+
 }
 
 body.dark-mode .card-title,
@@ -446,6 +443,8 @@ body.dark-mode .cta svg {
   transform: scale(0.95);
   
 }
+
+
 
 
 </style>

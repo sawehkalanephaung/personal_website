@@ -7,7 +7,7 @@
      <div class="container h-100 d-flex align-items-center hero-bennner">
        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
          <div class="col-12 col-lg-6 d-flex justify-content-center slide-in-right">
-           <img src="@/assets/image1.png" class="img-fluid  w-100 rounded-4" alt="image" width="700"
+           <img src="@/assets/me.jpg" class="img-fluid  w-100 rounded-4" alt="image" width="700"
              height="500" loading="lazy" />
          </div>
          <div class="col-lg-6 text-start slide-in-left">
@@ -20,7 +20,7 @@
            </div>
            <p class="text-start fs-5">Hello! I’m Saw, a front-end developer and UI designer passionate about creating intuitive user interfaces. I specialize in transforming UI designs into functional websites and applications using HTML, CSS, JavaScript, and modern frameworks.</p>
            <p class="text-start fs-5">
-             Skills and tools:
+            Specialized Skills and Tools
            </p>
            <ul class="dev-tools">
             <li class="icons">

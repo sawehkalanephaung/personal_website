@@ -49,7 +49,7 @@
             @click="closeMenu"
           >Contact</router-link>
           <div class="button-container">
-            <button  @click="previewResume"  type="button" class="btn button">Resume</button>
+            <button  @click="previewResume"  type="button" class="btn button fw-bold">Resume</button>
             <DarkModeToggle class="dark-mode-switch" />
           </div>
         </div>
@@ -289,6 +289,7 @@ body.dark-mode .nav-item {
 
 .button:active {
   transform: scale(0.9);
+  
 }
 
 /* Dark mode styles */

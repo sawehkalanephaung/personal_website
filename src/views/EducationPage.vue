@@ -7,20 +7,32 @@
     <div class="container col-xxl-8 px-4 py-5 ">
       <div class="col-12 mb-5 mt-5 text-start fade-in-down">
         <h1 class="display-5 fw-bold lh-1 mb-3">Education</h1>
-        <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum distinctio voluptatum ut voluptatibus, accusantium quae explicabo repudiandae iure reprehenderit ab vero, quod ullam rem, reiciendis voluptatem! Delectus hic laboriosam vero.</p>
+        <p class="fs-3"> Timeline of my Eudcation History </p>
+        <p class="fs-4">Throughout my educational path, I've gained diverse knowledge and skills in software engineering, combining theoretical foundations with practical experience.</p>
       </div>     
        <!-- List all education here -->
 <div class="timeline">
   <div class="timeline-item left slide-fade-right">
     <div class="card card-bg">
       <div class="card-body text-end">
-        <h5 class="card-title fw-bold">Bachelor of Computer Science</h5>
-        <h6 class="card-subtitle mb-2 ">University of Example | 2020-2024</h6>
-        <ul class="list-unstyled">
-          <li>Major in Software Engineering</li>
-          <li>GPA: 3.8/4.0</li>
-          <li>Dean's List: 2020-2024</li>
-          <li>Relevant Coursework: Web Development, UI/UX Design, Database Systems</li>
+        <h5 class="card-title fw-bold fs-2">Chiang Mai University</h5>
+        <h6 class="card-subtitle mb-2 fs-4"> B.S in Software Engineering</h6>
+        <h6 class="  fs-5 mb-4">2020-2024</h6>
+        <ul class="list-unstyled fs-5 gap-2">
+          <li>Computer & Programming ( JAVA ) 💻 </li>
+          <li>OOP ( JAVA ) 🔄 </li>
+          <li>Programming Logical Thinking 🧠 </li>
+          <li>ADT and Problem Soving ( JAVA ) 🎯 </li>
+          <li>Algorithrns Design and Analysis 📊 </li>
+          <li>Intro to Software Engineering 🚀 </li>
+          <li>Database System Design 🗄️ </li>
+          <li>Font-end and Web Development 🌐 </li>
+          <li>Software Requirement Analysis 📝 </li>
+          <li>Software Design and Architecture 🏗️ </li>
+          <li>DevOps 🔄 </li>
+          <li>component-Based Software Development 🧩</li>
+          <li>Software Construction and Testing 🛠️ </li>
+          <li>Software Quality Assurance ✅ </li>        
         </ul>
       </div>
     </div>
@@ -29,12 +41,30 @@
   <div class="timeline-item right slide-fade-left">
     <div class="card card-bg">
       <div class="card-body text-start">
-        <h5 class="card-title fw-bold">High School Diploma</h5>
-        <h6 class="card-subtitle mb-2 ">Example High School | 2016-2020</h6>
-        <ul class="list-unstyled">
-          <li>Advanced Placement in Computer Science</li>
-          <li>Student Council Technology Officer</li>
-          <li>oding Club President</li>
+        <h5 class="card-title fw-bold fs-2">BEAM</h5>
+        <h6 class="card-subtitle mb-2 fs-4">GED Diploma</h6>
+        <h6 class="mb-4 fs-5">2018-2019</h6>
+        <ul class="list-unstyled fs-5 gap-2">
+          <li>🔬 Science </li>
+          <li>🔢 Mathermatic </li>
+          <li>📚 English </li>
+          <li>🌎 Social Study ( US ) </li>        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-item left slide-fade-right">
+    <div class="card card-bg">
+      <div class="card-body text-end">
+        <h5 class="card-title fw-bold fs-2">Thoo Mweh Khee Migrate School</h5>
+        <h6 class="card-subtitle mb-2 fs-4 ">High School Deploma</h6>
+        <h6 class="mb-4 fs-5">2010-2017</h6>
+        <ul class="list-unstyled fs-5 gap-2">
+          <li>Community Development 👥 </li>
+          <li>Mathermatic 🔢 </li>
+          <li>English 📚 </li>
+          <li>Science 🔬 </li>
+          <li>Social Study 🌎 </li>
         </ul>
       </div>
     </div>
@@ -324,6 +354,12 @@ body.dark-mode .card-bg{
     transform: translateX(0);
     opacity: 1;
   }
+}
+.card-subtitle{
+  padding: 4px;
+  border-radius: 4px;
+  color: gray;
+
 }
   </style>
   
