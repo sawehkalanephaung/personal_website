@@ -1,36 +1,28 @@
 <template>
-  <div class="container-fluid position-relative vh-100 overflow-hidden">
-   <div class="wave-container">
-     <img src="@/assets/wave_animation_light.svg" alt="wave animation" class="wave-background light-mode-wave" />
-     <img src="@/assets/wave_animation_dark.svg" alt="wave animation" class="wave-background dark-mode-wave" />
-   </div>
-   <div class="container h-100 d-flex align-items-center hero-bennner">
-     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-       <div class="col-12 col-lg-6 d-flex justify-content-center slide-in-right">
-         <img src="@/assets/header.svg" class="img-fluid w-200 rounded-4" alt="image" width="700"
-           height="500" loading="lazy" />
-       </div>
-       <div class="col-lg-6 text-start slide-in-left">
-          <h1 class="display-5 fw-bold lh-1 mb-3">
-           Hi there !
-         </h1>
-         <div class="text-container">
-           <span class="text first-text display-1">I am a</span>
-           <span class="text sec-text display-1">Frontend Developer</span>
-         </div>
-         <div class="d-grid gap-2 d-md-flex justify-content-md-startn">
-           <button  @click="goToContact" class="btn  btn-lg px-4 me-md-2 cta mt-4">
-            <span>About me</span>
-            <svg width="15px" height="10px" viewBox="0 0 13 10">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </button>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+  <div class="container-fluid position-relative vh-100 overflow-hidden d-flex justify-content-center align-items-center">
+    <div class="wave-container">
+      <img src="@/assets/wave_animation_light.svg" alt="wave animation" class="wave-background light-mode-wave" />
+      <img src="@/assets/wave_animation_dark.svg" alt="wave animation" class="wave-background dark-mode-wave" />
+    </div>
+    <div class="text-center ">
+      <h1 class="display-3 fw-bold lh-1 mb-3 fadeInLeft ">
+        Hi there!
+      </h1>
+      <div class="text-container fadeInRight">
+        <span class="text first-text display-2">I am a</span>
+        <span class="text sec-text display-2">Frontend Developer</span>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4 comeUp">
+        <button @click="goToContact" class="btn btn-lg px-4 me-md-2 cta">
+          <span>About me</span>
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -40,82 +32,92 @@ import { onMounted } from 'vue';
 const router = useRouter();
 
 const goToContact = () => {
- router.push({ name: 'AboutMe' });
+  router.push({ name: 'AboutMe' });
 }
 
 onMounted(() => {
- const text = document.querySelector(".sec-text");
+  const text = document.querySelector(".sec-text");
 
- const textLoad = () => {
-   setTimeout(() => {
-     text.textContent = "Front-End Dev";
-   }, 0);
-   setTimeout(() => {
-     text.textContent = "UX & UI Designer"
-   }, 4000);
-   setTimeout(() => {
-     text.textContent = "Freelencer"
-   }, 8000)
- }
- textLoad();
- setInterval(textLoad, 12000)
+  const textLoad = () => {
+    setTimeout(() => {
+      text.textContent = "Front-End Dev";
+    }, 0);
+    setTimeout(() => {
+      text.textContent = "UX & UI Designer"
+    }, 4000);
+    setTimeout(() => {
+      text.textContent = "Freelancer"
+    }, 8000)
+  }
+  textLoad();
+  setInterval(textLoad, 12000)
 })
 </script>
 
 <style scoped>
+
+.container-fluid {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .text-container {
- position: relative;
- overflow: hidden;
- display: inline-block;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .text {
- position: relative;
- color: var(--red);
- font-size: 30px;
- font-weight: 600;
+  position: relative;
+  color: var(--red);
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  font-weight: 600;
 }
 
 body.dark-mode .text {
- color: var(--blue);
+  color: var(--blue);
 }
 
 .first-text {
- color: var(--black);
- margin-right: 10px;
+  color: var(--black);
+  margin-right: 10px;
 }
 
 body.dark-mode .first-text,
 body.dark-mode h1 {
- color: var(--white);
+  color: var(--white);
 }
 
 .sec-text:before {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- height: 100%;
- width: 100%;
- background-color: var(--white);
- border-left: 2px solid var(--red);
- animation: animate 4s steps(12) infinite;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--white);
+  border-left: 2px solid var(--red);
+  animation: animate 4s steps(12) infinite;
 }
 
 body.dark-mode .sec-text:before {
- background-color: var(--charcoal);
- border-left: 2px solid var(--blue);
+  background-color: var(--charcoal);
+  border-left: 2px solid var(--blue);
 }
 
 @keyframes animate {
- 40%,
- 60% {
-   left: calc(100% + 4px);
- }
+  40%,
+  60% {
+    left: calc(100% + 4px);
+  }
 
- 100% {
-   left: 0%;
- }
+  100% {
+    left: 0%;
+  }
 }
 
 /* CTA button styles */
@@ -136,7 +138,6 @@ body.dark-mode .sec-text:before {
   width: fit-content;
   height: 45px;
 }
-
 
 .cta:before {
   content: "";
@@ -216,59 +217,51 @@ body.dark-mode .cta svg {
   
 }
 
-
-
 /* wave animation */
 
 .wave-container {
- position: fixed;
- top: 40vh;
- left: 0;
- width: 100vw;
- height: 100vh;
- z-index: -1;
- overflow: hidden;
+  position: fixed;
+  top: 40vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .wave-background {
- position: absolute;
- width: 100%;
- height: 100%;
- top: 0;
- left: 0;
- z-index: -1;
- overflow: hidden;
-}
-
-.container-fluid {
- min-height: 100vh;
- max-height: 100vh;
- overflow: hidden !important;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .light-mode-wave {
- display: block;
+  display: block;
 }
 
 .dark-mode-wave {
- display: none;
+  display: none;
 } 
 
 body.dark-mode .light-mode-wave {
- display: none;
+  display: none;
 }
 
 body.dark-mode .dark-mode-wave {
- display: block;
+  display: block;
 }
 
 @media screen and (max-width: 768px) {
   .text {
-    font-size: 20px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Adjust font size for smaller screens */
   }
 
-  h1.display-5 {
-    font-size: 2rem;
+  h1.display-3 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Responsive heading size */
   }
 
   .text-container {
@@ -286,37 +279,22 @@ body.dark-mode .dark-mode-wave {
   .row {
     margin: 0;
   }
-
-  .img-fluid {
-    width: 100%;
-    max-width: 600px;
-  }
 }
 
 @media screen and (max-width: 990px) {
-  .img-fluid {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-  }
-  .wave-container{
-    display: none;
-  }
-
   .text {
-    font-size: 20px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Adjust font size for medium screens */
     text-align: center;
   }
 
-  h1.display-5 {
-    font-size: 2rem;
-    text-align: left;
+  h1.display-3 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Responsive heading size */
+    text-align: center;
   }
 
   .text-container {
     width: 100%;
-    text-align: left;
+    text-align: center;
   }
   .cta {
     margin: 0;
@@ -329,19 +307,7 @@ body.dark-mode .dark-mode-wave {
   }
 }
 
-
-/* Add these new animation classes */
-.slide-in-left {
-  animation: slideInLeft 1s ease-out forwards;
-  opacity: 0;
-}
-
-.slide-in-right {
-  animation: slideInRight 1s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes slideInLeft {
+@keyframes fadeInLeft {
   0% {
     transform: translateX(-100%);
     opacity: 0;
@@ -352,7 +318,7 @@ body.dark-mode .dark-mode-wave {
   }
 }
 
-@keyframes slideInRight {
+@keyframes fadeInRight {
   0% {
     transform: translateX(100%);
     opacity: 0;
@@ -362,4 +328,29 @@ body.dark-mode .dark-mode-wave {
     opacity: 1;
   }
 }
+
+@keyframes comeUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h1 {
+  animation: fadeInLeft 2s ease-in-out forwards;
+}
+
+.text-container {
+  animation: fadeInRight 2s ease-in-out forwards;
+}
+
+.cta {
+  animation: comeUp 2s ease-in-out forwards;
+}
+
+
 </style>

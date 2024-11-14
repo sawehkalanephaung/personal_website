@@ -6,9 +6,7 @@
     <button @click="toggleMode">Toggle Mode</button>
     <AppNavigation />
     <router-view></router-view>
-
-  </div>
-      
+  </div> 
 </div>
 </template>
 
