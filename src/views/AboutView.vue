@@ -97,7 +97,7 @@
  
  <script setup>
  function previewResume() {
-   const resumePath = '/Resume.pdf';
+   const resumePath = '/resume.pdf';
    const link = document.createElement('a');
    link.href = resumePath;
    link.target = '_blank'; 
